@@ -284,6 +284,7 @@ public class HandlerActivity extends AppCompatActivity {
  mUIHandler.postDelayed(r, time);方法有2个参数，一个是Runnable，一个是延迟的时间。 handler把消息发送到队列中，在延迟一定时间后，取出消息，然后执行消息(runnable)里的代码。
  
 代码运行效果如下：
+
 ![gif](https://raw.githubusercontent.com/xyhrun/BlogRes/master/handler/post_delay.gif)
 
 以下是日志：
