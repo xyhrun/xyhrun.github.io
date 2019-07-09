@@ -52,7 +52,7 @@ Handler发送消息(Message)到队列(MessageQueue,先进先出)，接着looper�
 </resources>
 ```
   
-</br>   
+     
 布局如下(activity_ui_handler.xml)：
   
 ```
@@ -82,7 +82,7 @@ Handler发送消息(Message)到队列(MessageQueue,先进先出)，接着looper�
 </RelativeLayout>
 
 ```
-</br> 
+  
 功能代码如下：
   
 ```
@@ -143,11 +143,11 @@ public class HandlerActivity extends AppCompatActivity {
 
         private void checkWeather() {
             try {
-                // 模拟耗时工作
+                /* 模拟耗时工作 */
                 Thread.sleep(1200);
                 String weatherInfo = "城市：北京\n天气：多云\n温度：23~35度";
 
-                // 通知主线程更新天气信息
+                /* 通知主线程更新天气信息 */
                 Message.obtain(mUIHandler, MSG_CHECK_WEATHER_FINISH, weatherInfo).sendToTarget();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -183,11 +183,11 @@ public class HandlerActivity extends AppCompatActivity {
             public void run() {
                 super.run();
                 Log.d(TAG, " work thread: " + getName());
-                // 创建Looper,不调用它将会报错：Can't create handler inside thread that has not called Looper.prepare()
+                // 创建Looper,不调用它将会报错：Can't create handler inside thread that has not called Looper.prepare()  
                 Looper.prepare();
                 mWorkHandler = new Handler(mWorkCallBack);
-//              等同于上面代码
-//              mWorkHandler = new Handler(Looper.myLooper(), mWorkCallBack);
+//              等同于上面代码   
+//              mWorkHandler = new Handler(Looper.myLooper(), mWorkCallBack);    
                 Looper.loop();
             }
         };
@@ -220,12 +220,12 @@ public class HandlerActivity extends AppCompatActivity {
 
 }
 
-
-
 ```
-</br> 
+  
 效果如下：
+
 ![gif](https://raw.githubusercontent.com/xyhrun/BlogRes/master/handler/check_weather.gif)
+
 日志如下：
  
 ```
@@ -285,8 +285,11 @@ public class HandlerActivity extends AppCompatActivity {
  
 代码运行效果如下：
 ![gif](https://raw.githubusercontent.com/xyhrun/BlogRes/master/handler/post_delay.gif)
+
 以下是日志：
+
 ![handler_post_delay](https://raw.githubusercontent.com/xyhrun/BlogRes/test/handler/handler_post_delay.png )
+
 我们可以看到 主线程是每隔5秒都会发起 查询天气的请求。
 另外我们发现了一个问题，当activity调用stop()方法后 仍然会发起请求。这不仅会影响用户体验，同时会造成内存泄漏。
 所以我们需要在stop()里关闭消息循环
