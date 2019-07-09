@@ -147,7 +147,7 @@ public class HandlerActivity extends AppCompatActivity {
                 Thread.sleep(1200);
                 String weatherInfo = "城市：北京\n天气：多云\n温度：23~35度";
 
-                /* 通知主线程更新天气信息 */
+                /* 通知主线程更新天气信息 */  
                 Message.obtain(mUIHandler, MSG_CHECK_WEATHER_FINISH, weatherInfo).sendToTarget();
             } catch (InterruptedException e) {
                 e.printStackTrace();
