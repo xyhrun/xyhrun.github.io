@@ -42,6 +42,7 @@ Handler发送消息(Message)到队列(MessageQueue,先进先出)，接着looper�
   下面是代码：
 
   资源文件(strings.xml)
+
 ```
 <resources>
     <string name="app_name">salen</string>
@@ -50,8 +51,10 @@ Handler发送消息(Message)到队列(MessageQueue,先进先出)，接着looper�
     <string name="check_weather_success">查询成功</string>
 </resources>
 ```
-
+  
+</br>   
 布局如下(activity_ui_handler.xml)：
+  
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -79,9 +82,9 @@ Handler发送消息(Message)到队列(MessageQueue,先进先出)，接着looper�
 </RelativeLayout>
 
 ```
-
+</br> 
 功能代码如下：
-
+  
 ```
 package xyz.minelife.handler;
 
@@ -220,11 +223,11 @@ public class HandlerActivity extends AppCompatActivity {
 
 
 ```
-
+</br> 
 效果如下：
 ![gif](https://raw.githubusercontent.com/xyhrun/BlogRes/master/handler/check_weather.gif)
 日志如下：
-
+ 
 ```
 06-30 17:08:36.673 3800-3856/xyz.minelife.salen D/HandlerActivity==: work thread: Thread-129
 06-30 17:08:40.965 3800-3800/xyz.minelife.salen D/HandlerActivity==: checkTheWeather
